@@ -848,7 +848,7 @@ void CableServer::Recv(void)
                 numbytes += nr;
             }
             if (inbuffer[1] == -32) {
-                char message[30];
+                char message[33];
                 sprintf(message, _("Player %d disconnected."), i + 2);
                 systemScreenMessage(message);
                 outbuffer[0] = 4;
@@ -912,7 +912,7 @@ bool CableServer::RecvGB(void)
                 counter = 1;
 
             if (inbuffer[1] == -32) {
-                char message[30];
+                char message[33];
                 sprintf(message, _("Player %d disconnected."), i + 2);
                 systemScreenMessage(message);
                 for (i = 1; i < lanlink.numslaves; i++) {
@@ -1556,7 +1556,7 @@ void RFUServer::Recv(void)
             tcpsocket[i + 1].setBlocking(false);
             sf::Socket::Status status = tcpsocket[i + 1].receive(packet);
             if (status == sf::Socket::Disconnected) {
-                char message[30];
+                char message[33];
                 sprintf(message, _("Player %d disconnected."), i + 1);
                 systemScreenMessage(message);
                 //tcpsocket[i + 1].disconnect();
